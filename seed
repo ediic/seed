@@ -1,0 +1,27 @@
+-factory class
+$factory->define(\App\Customer::class, function(Faker $faker){
+	return [
+	    'company_id' => factory(Company::class)->create(),  //se pune automat id-ul la Company
+	    'name' => $faker->name,
+	];
+});
+
+
+-seeder class
+factory(\App\Customer::class, 3)->create();
+
+:composer dump-autoload
+
+--
+$user = factory(User::class)->create();
+$phone = new Phone();
+$phone->phone = '12-43-76';
+$user->phone()->save($phone); 
+
+--
+$user = factory(User::class)->create();
+
+$user->phone()->create([
+		'phone' => '22-33-44'
+	]);
+
